@@ -1,5 +1,9 @@
 .{
     .working_directory = .home,
+    .startup_cmds = .{
+        // .{ "swaybg", "-i", "/path/to/wallpaper" },
+        .{ "wlr-randr", "--output", "DP-3", "--mode", "1920x1080@280" }
+    },
     .bar = .{
         .font = "monospace:size=14",
     },
