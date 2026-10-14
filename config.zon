@@ -1,8 +1,9 @@
 .{
     .working_directory = .home,
     .startup_cmds = .{
-        // .{ "swaybg", "-i", "/path/to/wallpaper" },
-        .{ "wlr-randr", "--output", "DP-3", "--mode", "1920x1080@280" }
+        // .{ "swaybg", "-i", "/home/fxzz/Pictures/Wallpapers/wall.png" },
+        .{ "wlr-randr", "--output", "DP-3", "--mode", "1920x1080@280" },
+        .{ "/usr/lib/polkit-kde-authentication-agent-1" }
     },
     .bar = .{
         .font = "monospace:size=14",
@@ -36,7 +37,7 @@
             .{ .keysym = "0", .modifiers = .{ .mod4 = true, .shift = true }, .event = .{ .click = .{ .pressed = .{ .set_window_tag = .{ .tag = .{ .tag = 0b111111111 } } } } } },
             .{
                 .keysym = "k",
-                .modifiers = .{ .mod4 = true  },
+                .modifiers = .{ .mod4 = true, .shift = true  },
                 .event = .{
                     .click = .{
                         .pressed = .{
@@ -47,7 +48,7 @@
             },
             .{
                 .keysym = "j",
-                .modifiers = .{ .mod4 = true  },
+                .modifiers = .{ .mod4 = true, .shift = true  },
                 .event = .{
                     .click = .{
                         .pressed = .{
@@ -58,7 +59,7 @@
             },
             .{
                 .keysym = "l",
-                .modifiers = .{ .mod4 = true  },
+                .modifiers = .{ .mod4 = true, .shift = true  },
                 .event = .{
                     .click = .{
                         .pressed = .{
@@ -69,7 +70,7 @@
             },
             .{
                 .keysym = "h",
-                .modifiers = .{ .mod4 = true  },
+                .modifiers = .{ .mod4 = true, .shift = true  },
                 .event = .{
                     .click = .{
                         .pressed = .{
@@ -88,7 +89,58 @@
                 },
             },
             .{
-                .keysym = "q",
+                .keysym = "l",
+                .modifiers = .{ .mod4 = true },
+                .event = .{
+                    .click = .{
+                        .pressed = .focus_master_return,
+                    },
+                },
+            },
+            .{
+                .keysym = "h",
+                .modifiers = .{ .mod4 = true },
+                .event = .{
+                    .click = .{
+                        .pressed = .focus_master_return,
+                    },
+                },
+            },
+            .{
+                .keysym = "k",
+                .modifiers = .{ .mod4 = true },
+                .event = .{
+                    .click = .{
+                        .pressed = .{
+                            .focus_iter = .{ .direction = .reverse },
+                        },
+                    },
+                },
+            },
+            .{
+                .keysym = "j",
+                .modifiers = .{ .mod4 = true },
+                .event = .{
+                    .click = .{
+                        .pressed = .{
+                            .focus_iter = .{ .direction = .forward },
+                        },
+                    },
+                },
+            },
+            .{
+                .keysym = "f",
+                .modifiers = .{ .mod4 = true  },
+                .event = .{
+                    .click = .{
+                        .pressed = .{
+                            .toggle_fullscreen = .{ .in_window = false },
+                        },
+                    },
+                },
+            },
+            .{
+                .keysym = "e",
                 .modifiers = .{ .mod4 = true, .shift = true },
                 .event = .{
                     .click = .{
@@ -117,6 +169,17 @@
                     .click = .{
                         .pressed = .{
                             .spawn = .{ .argv = .{ "brave-origin" } },
+                        },
+                    },
+                },
+            },
+            .{
+                .keysym = "o",
+                .modifiers = .{ .mod4 = true },
+                .event = .{
+                    .click = .{
+                        .pressed = .{
+                            .spawn = .{ .argv = .{ "dolphin" } },
                         },
                     },
                 },
