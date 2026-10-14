@@ -1,9 +1,12 @@
 .{
     .working_directory = .home,
+    .background = null,
+    .xcursor_theme = .{ .name = "Adwaita", .size = 24 },
     .startup_cmds = .{
-        // .{ "swaybg", "-i", "/home/fxzz/Pictures/Wallpapers/wall.png" },
+        .{ "swaybg", "-i", "/home/fxzz/Pictures/Wallpapers/085.png" },
         .{ "wlr-randr", "--output", "DP-3", "--mode", "1920x1080@280" },
-        .{ "/usr/lib/polkit-kde-authentication-agent-1" }
+        .{ "/usr/lib/polkit-kde-authentication-agent-1" },
+        .{ "/usr/lib/xdg-desktop-portal-gtk" }
     },
     .bar = .{
         .font = "monospace:size=14",
@@ -75,6 +78,28 @@
                     .click = .{
                         .pressed = .{
                             .modify_master_location = .{ .location = .left },
+                        },
+                    },
+                },
+            },
+            .{
+                .keysym = "h",
+                .modifiers = .{ .mod4 = true, .ctrl = true },
+                .event = .{
+                    .click = .{
+                        .pressed = .{
+                            .modify_mfact = .{ .change = .{ .step = 0.01 } },
+                        },
+                    },
+                },
+            },
+            .{
+                .keysym = "l",
+                .modifiers = .{ .mod4 = true, .ctrl = true },
+                .event = .{
+                    .click = .{
+                        .pressed = .{
+                            .modify_mfact = .{ .change = .{ .step = -0.01 } },
                         },
                     },
                 },
