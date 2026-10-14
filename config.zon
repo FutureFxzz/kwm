@@ -1,7 +1,7 @@
 .{
     .working_directory = .home,
     .bar = .{
-        .font = "monospace:size=14"
+        .font = "monospace:size=14",
     },
     .layout = .{
         .tile = .{
@@ -31,6 +31,50 @@
             .{ .keysym = "9", .modifiers = .{ .mod4 = true, .shift = true }, .event = .{ .click = .{ .pressed = .{ .set_window_tag = .{ .tag = .{ .tag = 0b100000000 } } } } } },
             .{ .keysym = "0", .modifiers = .{ .mod4 = true, .shift = true }, .event = .{ .click = .{ .pressed = .{ .set_window_tag = .{ .tag = .{ .tag = 0b111111111 } } } } } },
             .{
+                .keysym = "k",
+                .modifiers = .{ .mod4 = true  },
+                .event = .{
+                    .click = .{
+                        .pressed = .{
+                            .modify_master_location = .{ .location = .top },
+                        },
+                    },
+                },
+            },
+            .{
+                .keysym = "j",
+                .modifiers = .{ .mod4 = true  },
+                .event = .{
+                    .click = .{
+                        .pressed = .{
+                            .modify_master_location = .{ .location = .bottom },
+                        },
+                    },
+                },
+            },
+            .{
+                .keysym = "l",
+                .modifiers = .{ .mod4 = true  },
+                .event = .{
+                    .click = .{
+                        .pressed = .{
+                            .modify_master_location = .{ .location = .right },
+                        },
+                    },
+                },
+            },
+            .{
+                .keysym = "h",
+                .modifiers = .{ .mod4 = true  },
+                .event = .{
+                    .click = .{
+                        .pressed = .{
+                            .modify_master_location = .{ .location = .left },
+                        },
+                    },
+                },
+            },
+            .{
                 .keysym = "r",
                 .modifiers = .{ .mod4 = true, .shift = true },
                 .event = .{
@@ -54,6 +98,26 @@
                 },
             },
             .{
+                .keysym = "q",
+                .modifiers = .{ .mod4 = true },
+                .event = .{
+                    .click = .{
+                        .pressed = .close,
+                    },
+                },
+            },
+            .{
+                .keysym = "b",
+                .modifiers = .{ .mod4 = true },
+                .event = .{
+                    .click = .{
+                        .pressed = .{
+                            .spawn = .{ .argv = .{ "brave-origin" } },
+                        },
+                    },
+                },
+            },
+            .{
                 .keysym = "Return",
                 .modifiers = .{ .mod4 = true },
                 .event = .{
@@ -72,15 +136,6 @@
                         .pressed = .{
                             .spawn_shell = .{ .cmd = "wmenu-run" },
                         },
-                    },
-                },
-            },
-            .{
-                .keysym = "q",
-                .modifiers = .{ .mod4 = true },
-                .event = .{
-                    .click = .{
-                        .pressed = .close,
                     },
                 },
             },
