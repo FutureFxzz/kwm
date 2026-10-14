@@ -44,20 +44,33 @@ while sleep "$INTERVAL"; do
         next_net_check=$((SECONDS + 5))
     fi
 
+        # CPU temperature
+    temp=$(sensors 2>/dev/null | awk '
+        /Tctl:/ || /Tdie:/ || /Package id 0:/ {
+            if (match($0, /[+-]?[0-9]+([.][0-9]+)?°C/)) {
+                t = substr($0, RSTART, RLENGTH)
+                gsub(/[+°C]/, "", t)
+                print int(t + 0.5)
+                exit
+            }
+        }
+    ')
+    temp=${temp:-N/A}
     ram=$(free | awk '/^Mem:/ {printf "%d", ($3/$2)*100}')
     clock=$(date '+%H:%M')
     date_str=$(date '+%d %b')
 
-    # PipeWire volume
+        # PipeWire volume
     vol_info=$(wpctl get-volume @DEFAULT_AUDIO_SINK@ 2>/dev/null || true)
+
     if [[ "$vol_info" == *"[MUTED]"* ]]; then
         volume="MUTED"
     elif [[ "$vol_info" =~ Volume:\ ([0-9.]+) ]]; then
-        volume=$(( $(printf "%.0f" "$(echo "${BASH_REMATCH[1]} * 100" | bc -l)") ))
+        volume=$(awk -v v="${BASH_REMATCH[1]}" 'BEGIN {printf "%.0f", v * 100}')
     else
         volume="N/A"
     fi
 
-        printf '^#c777ffff CPU %s%%  ^#828bb8ff│ RAM %s%%  │ VOL %s  │ NET %s  │ %s %s^#!\n' \
-        "$cpu" "$ram" "$volume" "$network" "$date_str" "$clock" >&3
+      printf '^#c777ffff CPU %s%%  ^#828bb8ff│ TEMP %s°C  │ RAM %s%%  │ VOL %s  │ NET %s  │ %s %s^#!\n' \
+        "$cpu" "$temp" "$ram" "$volume" "$network" "$date_str" "$clock" >&3
 done

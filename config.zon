@@ -236,6 +236,39 @@
                     },
                 },
             },
+            .{
+                .keysym = "XF86AudioLowerVolume",
+                .modifiers = .{},
+                .event = .{
+                    .click = .{
+                        .pressed = .{
+                            .spawn_shell = .{ .cmd = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-" },
+                        },
+                    },
+                },
+            },
+            .{
+                .keysym = "XF86AudioRaiseVolume",
+                .modifiers = .{},
+                .event = .{
+                    .click = .{
+                        .pressed = .{
+                            .spawn_shell = .{ .cmd = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+" },
+                        },
+                    },
+                },
+            },
+            .{
+                .keysym = "XF86AudioMute",
+                .modifiers = .{},
+                .event = .{
+                    .click = .{
+                        .pressed = .{
+                            .spawn_shell = .{ .cmd = "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle" },
+                        },
+                    },
+                },
+            },
         },
     },
 }
