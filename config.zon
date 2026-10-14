@@ -6,10 +6,15 @@
         .{ "swaybg", "-i", "/home/fxzz/Pictures/Wallpapers/085.png" },
         .{ "wlr-randr", "--output", "DP-3", "--mode", "1920x1080@280" },
         .{ "/usr/lib/polkit-kde-authentication-agent-1" },
-        .{ "/usr/lib/xdg-desktop-portal-gtk" }
+        .{ "/usr/lib/xdg-desktop-portal-gtk" },
+        .{ "/home/fxzz/.config/kwm/kwm-status.sh" }
     },
     .bar = .{
         .font = "monospace:size=14",
+        .title = null,
+        .status = .{
+            .data = .{ .fifo = "/home/fxzz/.cache/kwm-status.fifo" }
+        },
     },
     .layout = .{
         .tile = .{
