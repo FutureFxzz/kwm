@@ -1,4 +1,5 @@
 .{
+    .working_directory = .home,
     .bar = .{
         .font = "monospace:size=14"
     },
@@ -29,7 +30,29 @@
             .{ .keysym = "8", .modifiers = .{ .mod4 = true, .shift = true }, .event = .{ .click = .{ .pressed = .{ .set_window_tag = .{ .tag = .{ .tag = 0b10000000 } } } } } },
             .{ .keysym = "9", .modifiers = .{ .mod4 = true, .shift = true }, .event = .{ .click = .{ .pressed = .{ .set_window_tag = .{ .tag = .{ .tag = 0b100000000 } } } } } },
             .{ .keysym = "0", .modifiers = .{ .mod4 = true, .shift = true }, .event = .{ .click = .{ .pressed = .{ .set_window_tag = .{ .tag = .{ .tag = 0b111111111 } } } } } },
-
+            .{
+                .keysym = "r",
+                .modifiers = .{ .mod4 = true, .shift = true },
+                .event = .{
+                    .click = .{
+                        .pressed = .reload_config,
+                    },
+                },
+            },
+            .{
+                .keysym = "q",
+                .modifiers = .{ .mod4 = true, .shift = true },
+                .event = .{
+                    .click = .{
+                        .pressed = .{
+                            .quit = .{
+                                .exit_session = true,
+                                .hook = null,
+                            },
+                        },
+                    },
+                },
+            },
             .{
                 .keysym = "Return",
                 .modifiers = .{ .mod4 = true },
